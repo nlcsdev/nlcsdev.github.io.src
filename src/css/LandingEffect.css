@@ -1,0 +1,466 @@
+:root {
+    --res-sensitivity: 0.2;
+    --effect-offset: calc(18% + (1920px - 100vmax)*var(--res-sensitivity));
+    --effect-offset-n: calc(-18% - (1920px - 100vmax)*var(--res-sensitivity));
+    --effect-offset-exit: 100%;
+    --effect-offset-n-exit: -100%;
+}
+
+.square {
+    width: 100%;
+    height: 100%;
+    background: #1D1C1C;
+    background-repeat: repeat;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #FAF7ED;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px 20px black;
+}
+
+/**************************************************************************************************/
+
+.effect-root-appear, .effect-root-enter, .effect-root-enter-done, .effect-root-exit {
+    display: grid !important;
+}
+
+.effect-root-exit-done {
+    display: none;
+}
+
+#EffectRoot {
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 72px);
+    margin: 0px;
+    display: none;
+    justify-content: center;
+    align-content: center;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 50;
+    overflow: hidden;
+}
+
+@media only screen and (min-width:600px) {
+    #EffectRoot {
+        top: 72px
+    }
+}
+
+/**************************************************************************************************/
+
+#EffectContainer1 {
+    width: 200vmax;
+    height: 200vmax;
+}
+
+#EffectContainer2 {
+    width: 400vmax;
+    height: 400vmax;
+}
+
+.effect-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+@keyframes diagonalRot {
+    from {
+        transform: rotate(45deg);
+    }
+    to {
+        transform: rotate(225deg);
+    }
+}
+
+.effect-container-appear {
+    animation: diagonalRot 1s ease 0s 1;
+    animation-fill-mode: both;
+}
+
+.effect-container-appear-done {
+    transform: rotate(225deg);
+}
+
+@keyframes diagonalRotEnter {
+    from {
+        transform: rotate(405deg);
+    }
+    to {
+        transform: rotate(225deg);
+    }
+}
+
+.effect-container-enter:not(.effect-container-appear) {
+    position: relative;
+    width: 200vmax;
+    height: 200vmax;
+    animation: diagonalRotEnter 1s ease 0s 1;
+    animation-fill-mode: both;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+.effect-container-enter-done:not(.effect-container-appear-done) {
+    position: relative;
+    width: 200vmax;
+    height: 200vmax;
+    transform: rotate(225deg);
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+@keyframes diagonalRotExit {
+    from {
+        transform: rotate(225deg);
+        display: grid;
+    }
+    to {
+        transform: rotate(405deg);
+        display: none;
+    }
+}
+
+.effect-container-exit {
+    position: relative;
+    width: 200vmax;
+    height: 200vmax;
+    animation: diagonalRotExit 1s ease 0s 1;
+    animation-fill-mode: both;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+.effect-container-exit-done {
+    position: relative;
+    width: 200vmax;
+    height: 200vmax;
+    transform: rotate(405deg);
+    display: none;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+}
+
+/**************************************************************************************************/
+
+.square-one {
+    position: absolute;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    z-index: 94;
+}
+
+@keyframes one {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(var(--effect-offset), var(--effect-offset-n));
+    }
+}
+
+.square-one-appear {
+    animation: one 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-one-appear-done {
+    transform: translate(var(--effect-offset), var(--effect-offset-n));
+}
+
+@keyframes one-enter {
+    from {
+        transform: translate(var(--effect-offset-exit), var(--effect-offset-n-exit));
+    }
+    to {
+        transform: translate(var(--effect-offset), var(--effect-offset-n));
+    }
+}
+
+.square-one-enter:not(.square-one-appear) {
+    animation: one-enter 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-one-enter-done:not(.square-one-appear-done) {
+    transform: translate(var(--effect-offset), var(--effect-offset-n));
+}
+
+@keyframes one-exit {
+    from {
+        transform: translate(var(--effect-offset), var(--effect-offset-n));
+    }
+    to {
+        transform: translate(var(--effect-offset-exit), var(--effect-offset-n-exit));
+    }
+}
+
+.square-one-exit {
+    animation: one-exit 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-one-exit-done {
+    transform: translate(var(--effect-offset-exit), var(--effect-offset-n-exit));
+}
+
+/**************************************************************************************************/
+
+.square-one-copy {
+    position: absolute;
+    z-index: 100;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    box-shadow: -50px -2px 10px 20px black;
+    border-width: 10px 0px;
+}
+
+@keyframes onecopy {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(calc(5% - var(--effect-offset)), calc(var(--effect-offset-n)));
+    }
+}
+
+.square-one-copy-appear {
+    animation: onecopy 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-one-copy-appear-done {
+    transform: translate(calc(5% - var(--effect-offset)), calc(var(--effect-offset-n)));
+}
+
+@keyframes onecopy-enter {
+    from {
+        transform: translate(calc(5% - var(--effect-offset-exit)), calc(var(--effect-offset-n-exit)));
+    }
+    to {
+        transform: translate(calc(5% - var(--effect-offset)), calc(var(--effect-offset-n)));
+    }
+}
+
+.square-one-copy-enter:not(.square-one-copy-appear) {
+    animation: onecopy-enter 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-one-copy-enter-done:not(.square-one-copy-appear-done) {
+    transform: translate(calc(5% - var(--effect-offset)), calc(var(--effect-offset-n)));
+}
+
+@keyframes onecopy-exit {
+    from {
+        transform: translate(calc(5% - var(--effect-offset)), calc(var(--effect-offset-n)));
+    }
+    to {
+        transform: translate(calc(5% - var(--effect-offset-exit)), calc(var(--effect-offset-n-exit)));
+    }
+}
+
+.square-one-copy-exit {
+    animation: onecopy-exit 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-one-copy-exit-done {
+    transform: translate(calc(5% - var(--effect-offset-exit)), calc(var(--effect-offset-n-exit)));
+}
+
+/**************************************************************************************************/
+
+.square-two {
+    position: absolute;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    z-index: 95;
+}
+
+@keyframes two {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(var(--effect-offset), var(--effect-offset));
+    }
+}
+
+.square-two-appear {
+    animation: two 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-two-appear-done {
+    transform: translate(var(--effect-offset), var(--effect-offset));
+}
+
+@keyframes two-enter {
+    from {
+        transform: translate(var(--effect-offset-exit), var(--effect-offset-exit));
+    }
+    to {
+        transform: translate(var(--effect-offset), var(--effect-offset));
+    }
+}
+
+.square-two-enter:not(.square-two-appear) {
+    animation: two-enter 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-two-enter-done:not(.square-two-appear-done) {
+    transform: translate(var(--effect-offset), var(--effect-offset));
+}
+
+@keyframes two-exit {
+    from {
+        transform: translate(var(--effect-offset), var(--effect-offset));
+    }
+    to {
+        transform: translate(var(--effect-offset-exit), var(--effect-offset-exit));
+    }
+}
+
+.square-two-exit {
+    animation: two-exit 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-two-exit-done {
+    transform: translate(var(--effect-offset-exit), var(--effect-offset-exit));
+}
+
+/**************************************************************************************************/
+
+.square-three {
+    position: absolute;
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    z-index: 97;
+}
+
+@keyframes three {
+    from {
+        transform: translate(0%, 0%);
+    }
+    to {
+        transform: translate(var(--effect-offset-n), var(--effect-offset-n));
+    }
+}
+
+.square-three-appear {
+    animation: three 1s ease 0s 1;
+    animation-fill-mode: both;
+}
+
+.square-three-appear-done {
+    transform: translate(var(--effect-offset-n), var(--effect-offset-n));
+}
+
+@keyframes three-enter {
+    from {
+        transform: translate(var(--effect-offset-n-exit), var(--effect-offset-n-exit));
+    }
+    to {
+        transform: translate(var(--effect-offset-n), var(--effect-offset-n));
+    }
+}
+
+.square-three-enter:not(.square-three-appear) {
+    animation: three-enter 1s ease 0s 1;
+    animation-fill-mode: both;
+}
+
+.square-three-enter-done:not(.square-three-appear-done) {
+    transform: translate(var(--effect-offset-n), var(--effect-offset-n));
+}
+
+@keyframes three-exit {
+    from {
+        transform: translate(var(--effect-offset-n), var(--effect-offset-n));
+    }
+    to {
+        transform: translate(var(--effect-offset-n-exit), var(--effect-offset-n-exit));
+    }
+}
+
+.square-three-exit {
+    animation: three-exit 1s ease 0s 1;
+    animation-fill-mode: both;
+}
+
+.square-three-exit-done {
+    transform: translate(var(--effect-offset-n-exit), var(--effect-offset-n-exit));
+}
+
+/**************************************************************************************************/
+
+.square-four {
+    position: absolute;
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    z-index: 96;
+}
+
+@keyframes four {
+    from {
+        transform: translate(0%, 0%);
+    }
+    to {
+        transform: translate(var(--effect-offset-n), var(--effect-offset));
+    }
+}
+
+.square-four-appear {
+    animation: four 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-four-appear-done {
+    transform: translate(var(--effect-offset-n), var(--effect-offset));
+}
+
+@keyframes four-enter {
+    from {
+        transform: translate(var(--effect-offset-n-exit), var(--effect-offset-exit));
+    }
+    to {
+        transform: translate(var(--effect-offset-n), var(--effect-offset));
+    }
+}
+
+.square-four-enter:not(.square-four-appear) {
+    animation: four-enter 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-four-enter-done:not(.square-four-appear-done) {
+    transform: translate(var(--effect-offset-n), var(--effect-offset));
+}
+
+@keyframes four-exit {
+    from {
+        transform: translate(var(--effect-offset-n), var(--effect-offset));
+    }
+    to {
+        transform: translate(var(--effect-offset-n-exit), var(--effect-offset-exit));
+    }
+}
+
+.square-four-exit {
+    animation: four-exit 1s ease 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.square-four-exit-done {
+    transform: translate(var(--effect-offset-n-exit), var(--effect-offset-exit));
+}
+
+/**************************************************************************************************/
