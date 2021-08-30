@@ -35,7 +35,7 @@ const nomDesc = "This site started out as a learning project, using requirements
 
 const portfolioDesc = "This site is built on React and stylized with Material UI. It also features an interactive resume builder that submits the data to a MongoDB database.";
 
-const Projects = () => {
+const Projects = (props) => {
 
     const theme = useTheme();
     const isStretch = useMediaQuery(theme.breakpoints.up('xl')) ? "center" : "stretch";
@@ -48,13 +48,14 @@ const Projects = () => {
     ]
 
     return (
-        <Switch>
+        <div>
+
             <Route exact path="/Projects">
                 <PageContainer src="projects" dir="row" child={content} ai={isStretch} />
             </Route>
 
             <Route path="/Projects/Work">
-                <PageContainer src="work" dir="row" child={[(<WorkPage />)]}/>
+                <PageContainer src="work" dir="row" child={[(<WorkPage />)]} />
             </Route>
 
             <Route path="/Projects/Rgbif">
@@ -66,10 +67,10 @@ const Projects = () => {
             </Route>
 
             <Route path="/Projects/Portfolio">
-                <PageContainer src="portfolio" dir="row" child={[(<PortfolioPage />)]}/>
+                <PageContainer src="portfolio" dir="row" child={[(<PortfolioPage />)]} />
             </Route>
 
-        </Switch>
+        </div>
 
     );
 }

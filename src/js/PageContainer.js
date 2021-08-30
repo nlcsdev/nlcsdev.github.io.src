@@ -36,7 +36,7 @@ const PageContainer = (props) => {
 
     const classes = useStyle();
 
-    const childrenComp = props.child.map( (x,i) => {
+    const childrenComp = props.child.map((x, i) => {
         const childKey = props.src + "_" + i;
         return (
             <Grid key={childKey} className={classes[x.props.customClass]} item>{x}</Grid>
@@ -45,8 +45,8 @@ const PageContainer = (props) => {
     );
 
     return (
-        <Grid container justifyContent="center">
-            <Grid key={props.src} className={classes.root} item container  xs={12} sm={10} spacing={0} direction={props.dir? props.dir:'column'} justifyContent={props.jc? props.jc:"center"} alignItems={props.ai? props.ai:"center"}>
+        <Grid className="relative" container justifyContent="center" >
+            <Grid key={props.src} className={classes.root} item container xs={12} sm={10} spacing={0} direction={props.dir ? props.dir : 'column'} justifyContent={props.jc ? props.jc : "center"} alignItems={props.ai ? props.ai : "center"}>
                 {childrenComp}
             </Grid>
         </Grid>

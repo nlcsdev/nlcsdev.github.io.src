@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import PageContainer from './PageContainer';
 import Social from './Social';
 
-const LandingPage = () => {
+const LandingPage = (props) => {
 
     const content = [(
         <Card elevation={24}>

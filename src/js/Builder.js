@@ -24,7 +24,7 @@ const defaultResume = {
     profile: "",
     work: "",
     education: "",
-    langauges: [],
+    languages: [],
     others: []
 }
 
@@ -53,19 +53,19 @@ export const resumeState = (state = defaultResume, action) => {
 
         case UPDATELANGUAGE:
             if (action.payload != null) {
-                currentResume.langauges.push(action.payload);
+                currentResume.languages = [...currentResume.languages, action.payload];
             }
             return currentResume;
 
         case UPDATEOTHER:
             if (action.payload != null) {
-                currentResume.others.push(action.payload);
+                currentResume.others = [...currentResume.others, action.payload];
             }
             return currentResume;
 
         case REMOVELANGUAGE:
             if (action.payload != null) {
-                currentResume.langauges.splice(action.payload, 1);
+                currentResume.languages.splice(action.payload, 1);
             }
             return currentResume;
 
@@ -185,7 +185,7 @@ const Builder = (props) => {
     const theme = useTheme();
     const classes = useStyles();
     const submitStatusStyling = clsx({
-        [classes.submitSuccess]: success==true, [classes.submitError]: success==false
+        [classes.submitSuccess]: success === true, [classes.submitError]: success === false
     });
 
     const dispatch = useDispatch();
@@ -196,13 +196,17 @@ const Builder = (props) => {
     const onEnter = (event) => {
         if (event.keyCode == 13) {
             const target = event.target;
-            if (target.id == "language-field") {
-                newLanguage(event.target.value);
-                event.target.value = "";
-            }
-            else if (target.id == "other-field") {
-                newOther(event.target.value);
-                event.target.value = "";
+            let val = "";
+            if (target.id == "language-field" || target.id == "other-field") {
+                val = event.target.value;
+                if (val.trim() != "") {
+                    if (target.id == "language-field") {
+                        newLanguage(event.target.value);
+                    } else if (target.id == "other-field") {
+                        newOther(event.target.value);
+                    }
+                    event.target.value = "";
+                }
             }
         }
     }
@@ -228,7 +232,7 @@ const Builder = (props) => {
     }
 
     const onSubmit = (event) => {
-        if (!success) {
+        if (success == undefined) {
             setLoading(true);
             timer.current = window.setTimeout(SubmitData, 2500);
         }
@@ -236,25 +240,40 @@ const Builder = (props) => {
     }
 
     const SubmitData = () => {
-        axios.post("https://nlcsdev-proxy.herokuapp.com/newresume", {
-            profile: resumeState.profile,
-            work: resumeState.work,
-            education: resumeState.education,
-            languages: resumeState.langauges,
-            others: resumeState.others
-        }).then(
-            (res) => {
-                setLoading(false);
-                setSuccess(true);
-                clearTimeout(timer.current);
-                console.log(res.data);
+
+        let empty = true;
+        let defaultJson = JSON.stringify(defaultResume);
+        let currentJson = JSON.stringify(resumeState, (key, val) => {
+            if (typeof val === 'string') {
+                return val.trim();
             }
-        ).catch((err) => {
+            return val;
+        });
+
+        if (defaultJson != currentJson) {
+            empty = false;
+        }
+
+        if (!empty) {
+            axios.post("https://nlcsdev-proxy.herokuapp.com/newresume", resumeState).then(
+                (res) => {
+                    setLoading(false);
+                    setSuccess(true);
+                    clearTimeout(timer.current);
+                    console.log(res.data);
+                }
+            ).catch((err) => {
+                setLoading(false);
+                setSuccess(false);
+                clearTimeout(timer.current);
+                console.log(err)
+            });
+        } else {
             setLoading(false);
             setSuccess(false);
             clearTimeout(timer.current);
-            console.log(err)
-        });
+            console.error("Cannot submit empty data.");
+        }
     }
 
     const newProfile = (payload) => { dispatch({ type: UPDATEPROFILE, payload: payload }) };
@@ -267,7 +286,7 @@ const Builder = (props) => {
     const removeLanguage = (payload) => { dispatch({ type: REMOVELANGUAGE, payload: payload }) };
     const removeOther = (payload) => { dispatch({ type: REMOVEOTHER, payload: payload }) };
 
-    const languageBubbles = resumeState.langauges.map((x, i) => {
+    const languageBubbles = resumeState.languages.map((x, i) => {
         return (<Chip className={classes.chipRoot} key={"language_" + x + "_" + i} label={x} onDelete={() => { removeLanguage(i) }} />)
     })
 

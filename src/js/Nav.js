@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -27,6 +27,7 @@ const ResumeTab = LinkTab(process.env.PUBLIC_URL + "/Resume");
 
 const useStyle = makeStyles((theme) => ({
     root: {
+        zIndex: "3000",
         [theme.breakpoints.up('sm')]: {
             "& .MuiTab-wrapper": {
                 flexDirection: 'row'
@@ -41,16 +42,19 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const NavBar = () => {
+    const location = useLocation();
+    const compPathName = process.env.PUBLIC_URL + location.pathname;
     const classes = useStyle();
     const theme = useTheme();
     const TabsVar = useMediaQuery(theme.breakpoints.down('xs')) ? "fullWidth" : "standard";
+
     return (
         <AppBar className={classes.root}>
             <Tabs variant={TabsVar} value={false} >
-                <Tab className={classes.root} icon={<Icon>home</Icon>} label="Home" component={HomeTab} />
-                <Tab className={classes.root} icon={<Icon>person</Icon>} label="About" component={AboutTab} />
-                <Tab className={classes.root} icon={<Icon>construction</Icon>} label="Projects" component={ProjectsTab} />
-                <Tab className={classes.root} icon={<Icon>description</Icon>} label="Resume" component={ResumeTab} />
+                <Tab activepath={compPathName} className={classes.root} icon={<Icon>home</Icon>} label="Home" component={HomeTab} />
+                <Tab activepath={compPathName} className={classes.root} icon={<Icon>person</Icon>} label="About" component={AboutTab} />
+                <Tab activepath={compPathName} className={classes.root} icon={<Icon>construction</Icon>} label="Projects" component={ProjectsTab} />
+                <Tab activepath={compPathName} className={classes.root} icon={<Icon>description</Icon>} label="Resume" component={ResumeTab} />
             </Tabs>
         </AppBar>
     );

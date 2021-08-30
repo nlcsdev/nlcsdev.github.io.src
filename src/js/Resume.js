@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+
 import resume from "../img/resume.jpg";
 import resumePDF from "../resume.pdf";
 
@@ -8,7 +10,6 @@ import { LinkTab } from "./Nav";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Icon from '@material-ui/core/Icon';
-import Snackbar from '@material-ui/core/Snackbar';
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -18,6 +19,22 @@ import Builder from "./Builder";
 import PageContainer from "./PageContainer";
 
 import { SpacedButtons } from "./WorkPage"
+
+import { SETTIP } from "../root/actions";
+
+export const tipState = (state = false, action) => {
+    switch (action.type) {
+
+        case SETTIP:
+            if (action.value != state)
+                return action.value;
+            else
+                return state;
+
+        default:
+            return state;
+    }
+}
 
 const jumpyButton = makeStyles(
     {
@@ -66,14 +83,16 @@ const downloadPDF = () => {
     document.body.removeChild(a);
 }
 
-const Resume = () => {
+const Resume = (props) => {
 
     const theme = useTheme();
     const jumpy = jumpyButton();
     const classes = useStyles();
     const spaceBtn = SpacedButtons();
 
-    const [openTip, setTip] = useState(false);
+    const dispatch = useDispatch();
+
+    const setTip = (b) => { dispatch({ type: SETTIP, value: b }) };
 
     let xsDevice = useMediaQuery(theme.breakpoints.down('xs'))
     const restrictImg = xsDevice ? "" : "resumeImg";
@@ -99,19 +118,17 @@ const Resume = () => {
     ];
 
     return (
-        <div>
-            <Snackbar className={classes.tip} autoHideDuration={7000} open={openTip} onClose={() => { setTip(false) }} message="Show Me The Right Resume For This Job And Help Me Improve." action={
-                <Button aria-label="close-tip" color="secondary" onClick={() => { setTip(false) }}>CLOSE</Button>} />
-            <Switch>
-                <Route exact path={process.env.PUBLIC_URL + "/Resume"}>
-                    <PageContainer src="resume" jc={jcSetting} dir={containerDir} child={content} />
-                </Route>
 
-                <Route path={process.env.PUBLIC_URL + "/Resume/Builder"}>
-                    <PageContainer src="builder" jc={jcSetting} child={[(<Builder />)]} />
-                </Route>
-            </Switch>
-        </div>
+        <Switch>
+            <Route exact path={process.env.PUBLIC_URL + "/Resume"}>
+                <PageContainer src="resume" jc={jcSetting} dir={containerDir} child={content} />
+            </Route>
+
+            <Route path={process.env.PUBLIC_URL + "/Resume/Builder"}>
+                <PageContainer src="builder" jc={jcSetting} child={[(<Builder />)]} />
+            </Route>
+        </Switch>
+
     );
 }
 
