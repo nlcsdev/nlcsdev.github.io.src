@@ -255,7 +255,7 @@ const Builder = (props) => {
         }
 
         if (!empty) {
-            axios.post("https://nlcsdev-proxy.herokuapp.com/newresume", resumeState).then(
+            axios.post("https://cliff-website.rcp.r9n.co/newresume", resumeState).then(
                 (res) => {
                     setLoading(false);
                     setSuccess(true);
