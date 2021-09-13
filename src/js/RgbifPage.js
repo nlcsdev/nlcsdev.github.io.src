@@ -31,7 +31,7 @@ const RgbifPage = (props) => {
                 <CardContent>
                     <Typography variant="h4" component="h4">Tech Stack:</Typography>
                     <br />
-                    <Typography variant="body1" component="p">Python, Pgmagick (python wrapper of GraphicsMagick), tkinter</Typography>
+                    <Typography variant="body1" component="p">Python, Pgmagick (python wrapper of GraphicsMagick), Tkinter</Typography>
                 </CardContent>
             </Card>
             <Card className={spaceCard.root}>

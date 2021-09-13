@@ -13,20 +13,18 @@ const useStyle = makeStyles(
             [theme.breakpoints.only('xs')]: {
                 paddingBottom: "72px"
             }
-            //padding: "40px"
-            // [theme.breakpoints.up('sm')]: {
-            //     marginTop: "72px"
-            // }
         },
         projectCard: {
             width: "90%",
             padding: "20px",
             [theme.breakpoints.up('md')]: {
-                width: "35vw"
+                width: "35vw",
+                margin: "0px calc((100% - 70vw) / 4)"
             },
             [theme.breakpoints.up('xl')]: {
                 width: "20vw",
-                height: "70vh"
+                height: "70vh",
+                margin: "0px calc((100% - 80vw) / 8)"
             }
         }
     })

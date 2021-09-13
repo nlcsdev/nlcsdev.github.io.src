@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router";
 
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 import "../css/LandingEffect.css"
 
