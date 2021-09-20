@@ -109,32 +109,31 @@ const useStyles = makeStyles({
     },
     profile: {
         height: "8%",
-        top: "17.5%",
-        left: "6%",
-        width: "88%"
+        top: "18.5%",
+        left: "10.5%",
+        width: "82%"
     },
     work: {
         height: "18%",
-        top: "30%",
-        left: "6%",
-        width: "88%"
+        top: "31%",
+        left: "10.5%",
+        width: "82%"
     },
     education: {
         height: "15%",
-        top: "52%",
-        left: "6%",
-        width: "88%"
+        top: "53%",
+        left: "10.5%",
+        width: "82%"
     },
     language: {
         width: "42%",
-        top: "70%",
-        left: "5%",
-
+        top: "71%",
+        left: "9.5%",
     },
     other: {
         width: "42%",
-        top: "70%",
-        left: "51%",
+        top: "71%",
+        left: "52%",
     },
     bubble: {
         width: "40%",
