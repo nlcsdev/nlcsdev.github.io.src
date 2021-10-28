@@ -53,7 +53,7 @@ const WorkPage = (props) => {
                     <br />
                     <Typography variant="body1" component="p">Some other tasks at Sticky Rice Games I am involved in are attending stand ups, QA, setting up store pages, and working with multiplayer services.</Typography>
                     <br />
-                    <Typography variant="body1" component="p">* I often work with our partner studio Cherry Kiss Games, who produce mainly adult VNs, so some Games are NSFW. *</Typography>
+                    <Typography variant="body1" component="p">* I often work with our partner studio Cherry Kiss Games, who produce mainly adult VNs, so some games are NSFW. *</Typography>
                     <Typography variant="body1" component="p">* NSFW games require a steam account to view. *</Typography>
                     <br />
                 </CardContent>

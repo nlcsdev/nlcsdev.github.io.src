@@ -110,30 +110,30 @@ const useStyles = makeStyles({
     profile: {
         height: "8%",
         top: "18.5%",
-        left: "10.5%",
+        left: "9%",
         width: "82%"
     },
     work: {
         height: "18%",
         top: "31%",
-        left: "10.5%",
+        left: "9%",
         width: "82%"
     },
     education: {
         height: "15%",
         top: "53%",
-        left: "10.5%",
+        left: "9%",
         width: "82%"
     },
     language: {
         width: "42%",
         top: "71%",
-        left: "9.5%",
+        left: "8%",
     },
     other: {
         width: "42%",
         top: "71%",
-        left: "52%",
+        left: "50.5%",
     },
     bubble: {
         width: "40%",
