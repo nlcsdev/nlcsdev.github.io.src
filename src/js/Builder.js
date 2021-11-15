@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 
-import { UPDATELANGUAGE, UPDATEOTHER, REMOVELANGUAGE, REMOVEOTHER, UPDATEEDU, UPDATEWORK, UPDATEPROFILE } from "../root/actions.js";
+import { UPDATELANGUAGE, UPDATEOTHER, REMOVELANGUAGE, REMOVEOTHER, UPDATEEDU, UPDATEWORK, UPDATEPROFILE, UPDATEPROJ } from "../root/actions.js";
 
 
 import resume_template from "../img/resume_template.jpg";
@@ -21,8 +21,9 @@ import clsx from "clsx";
 const axios = require('axios');
 
 const defaultResume = {
-    profile: "",
+    //profile: "",
     work: "",
+    proj: "",
     education: "",
     languages: [],
     others: []
@@ -48,6 +49,12 @@ export const resumeState = (state = defaultResume, action) => {
         case UPDATEEDU:
             if (action.payload != null) {
                 currentResume.education = action.payload;
+            }
+            return currentResume;
+
+        case UPDATEPROJ:
+            if (action.payload != null) {
+                currentResume.proj = action.payload;
             }
             return currentResume;
 
@@ -107,6 +114,12 @@ const useStyles = makeStyles({
         position: "absolute",
         top: "0%"
     },
+    project: {
+        height: "26%",
+        top: "36%",
+        left: "9%",
+        width: "82%"
+    },
     profile: {
         height: "8%",
         top: "18.5%",
@@ -114,25 +127,25 @@ const useStyles = makeStyles({
         width: "82%"
     },
     work: {
-        height: "18%",
-        top: "31%",
+        height: "14%",
+        top: "18%",
         left: "9%",
         width: "82%"
     },
     education: {
-        height: "15%",
-        top: "53%",
+        height: "14%",
+        top: "66%",
         left: "9%",
         width: "82%"
     },
     language: {
         width: "42%",
-        top: "71%",
+        top: "83%",
         left: "8%",
     },
     other: {
         width: "42%",
-        top: "71%",
+        top: "83%",
         left: "50.5%",
     },
     bubble: {
@@ -148,7 +161,7 @@ const useStyles = makeStyles({
     },
     submitButton: {
         position: "absolute",
-        top: "93%",
+        top: "94.5%",
         left: "50%",
         transform: "translateX(-50%)"
     },
@@ -217,6 +230,8 @@ const Builder = (props) => {
             newWork(event.target.value);
         } else if (event.target.id == "education-field") {
             newEdu(event.target.value);
+        } else if (event.target.id == "project-field") {
+            newProj(event.target.value);
         }
     }
 
@@ -254,7 +269,10 @@ const Builder = (props) => {
         }
 
         if (!empty) {
-            axios.post("https://cliff-website.rcp.r9n.co/newresume", resumeState).then(
+            //let serverURL = " https://nlcsdev-proxy.herokuapp.com/";
+            let serverURL = "https://cliff-website.rcp.r9n.co/"
+            let newResumeRoute = serverURL + "newresume";
+            axios.post(newResumeRoute, resumeState).then(
                 (res) => {
                     setLoading(false);
                     setSuccess(true);
@@ -278,6 +296,7 @@ const Builder = (props) => {
     const newProfile = (payload) => { dispatch({ type: UPDATEPROFILE, payload: payload }) };
     const newWork = (payload) => { dispatch({ type: UPDATEWORK, payload: payload }) };
     const newEdu = (payload) => { dispatch({ type: UPDATEEDU, payload: payload }) };
+    const newProj = (payload) => { dispatch({ type: UPDATEPROJ, payload: payload }) };
 
     const newLanguage = (payload) => { dispatch({ type: UPDATELANGUAGE, payload: payload }) };
     const newOther = (payload) => { dispatch({ type: UPDATEOTHER, payload: payload }) };
@@ -297,8 +316,9 @@ const Builder = (props) => {
         <div className={"relative"}>
             <img className={restrictImg} src={resume_template} />
             <form className={`${classes.inheritSize} ${classes.form}`}>
-                <TextField className={`${classes.root} ${classes.profile}`} minRows={3} maxRows={3} id="profile-field" variant="outlined" multiline onChange={onChange} value={resumeState.profile} />
+                {/* <TextField className={`${classes.root} ${classes.profile}`} minRows={3} maxRows={3} id="profile-field" variant="outlined" multiline onChange={onChange} value={resumeState.profile} /> */}
                 <TextField className={`${classes.root} ${classes.work}`} minRows={6} maxRows={6} id="work-field" variant="outlined" multiline onChange={onChange} value={resumeState.work} />
+                <TextField className={`${classes.root} ${classes.project}`} minRows={11} maxRows={11} id="project-field" variant="outlined" multiline onChange={onChange} value={resumeState.proj} />
                 <TextField className={`${classes.root} ${classes.education}`} minRows={6} maxRows={6} id="education-field" variant="outlined" multiline onChange={onChange} value={resumeState.education} />
 
                 <div className={`${classes.root} ${classes.language}`}>

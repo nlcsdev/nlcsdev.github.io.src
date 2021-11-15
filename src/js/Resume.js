@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => (
     {
         root: {
             position: "absolute",
-            top: "93%",
+            top: "94.5%",
             left: "0%"
         },
         tip: {

@@ -1,6 +1,7 @@
 export const UPDATEEDU = "UPDATEEDU";
 export const UPDATEWORK = "UPDATEWORK";
 export const UPDATEPROFILE = "UPDATEPROFILE";
+export const UPDATEPROJ = "UPDATEPROJ";
 
 export const UPDATERESUME = "UPDATERESUME";
 export const UPDATELANGUAGE = "UPDATELANGUAGE";
