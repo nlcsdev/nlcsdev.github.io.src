@@ -43,12 +43,12 @@ const App = () => {
     const setTip = (b) => { dispatch({ type: SETTIP, value: b }) };
 
     const onEnter = () => {
-        window.scrollTo({ left: 0, top:window.pageYOffset, behavior: 'auto' });
+        window.scrollTo({ left: 0, top:window.pageYOffset, behavior: 'instant' });
         document.body.style.overflow = 'hidden';
         document.documentElement.style.overflow = 'hidden';
     }
 
-    const onExiting = () => {
+    const onEntering = () => {
         window.scrollTo({ left: 0, top: 0, behavior: "smooth" });   
     }
 
@@ -64,14 +64,14 @@ const App = () => {
             <Snackbar className={classes.tip} autoHideDuration={7000} open={showTip} onClose={() => { setTip(false) }} message="Show Me The Right Resume For This Job And Help Me Improve." action={
                 <Button aria-label="close-tip" color="secondary" onClick={() => { setTip(false) }}>CLOSE</Button>} />
             <TransitionGroup appear={true}>
-                <CSSTransition key={location.key} classNames="slide" timeout={1000} onEnter={onEnter} onExiting={onExiting} onEntered={onEntered}>
+                <CSSTransition key={location.key} classNames="slide" timeout={1000} onEnter={onEnter} onEntering={onEntering} onEntered={onEntered}>
                     <Switch location={location}>
                         <Route exact path={process.env.PUBLIC_URL + "/"}>
                             <LandingPage />
                         </Route>
 
                         <Route path={process.env.PUBLIC_URL + "/About"}>
-                            <About text="Hello, I am Nelson Liang. I am a software developer with a background in game design and currently working on a Computer Science Major. My professional experience involves around integrating backend services and localizing for video games via Unity with C#. I also have experience working with web technologies, including HTML, CSS, JS, React, Express, and more.
+                            <About text="Hello, I am Nelson Liang. I am a software developer with a background in game design and currently working on a Computer Science Major. My professional experience involves around integrating backend services and localizing for video games via Unity with C#. I also have experience working with web technologies, including HTML, CSS, JS, React, Svelte, Express, MongoDB, AWS, WebRTC, and more.
           \n
           I am looking forward to learning more about software development and making some amazing applications to show the world."
                             />

@@ -48,6 +48,7 @@ const ScaryPage = (props) => {
                     <Typography variant="body1" component="p">The current code base uses a singular image that gets saved and overwritten constantly to be presented to the virtual cam. Alternatively, each frame can be saved and stored, avoiding the need to constantly save them once they are all stored. However, this takes up significant storage space. Code for the alternative method is currently commented out.</Typography>
                     <br />
                     <Typography variant="body1" component="p">Some minor additional features include some shell code that starts up and clean up virtual devices, as well as packing the entire program inside a single shell script.</Typography>
+                    <br />
                 </CardContent>
                 <CardActions>
                     <Grid container>
