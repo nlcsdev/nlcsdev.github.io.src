@@ -39,10 +39,11 @@ const BCPage = (props) => {
                     <Typography variant="body1" component="p">Basement Chatter is peer-to-peer web chat application, serving as a prototype for the future development of other peer-to-peer web applications.</Typography>
                     <br />
                     <Typography variant="body1" component="p">Basement Chatter uses a node.js server with websockets as a signaling server, allowing clients to perform an initial connection to the signaling server to register their presence and be ready to offer and receive network information required to form a peer connection. All clients that login from the frontend will be registered on the signaling server and their presence will be notified to all other users.</Typography>
+                    <Grid container alignContent="center" direction="column">
+                        <img className={sampleImg.root} src={bc1} />
+                    </Grid>
                 </CardContent>
-                <Grid container alignContent="center" direction="column">
-                    <img className={sampleImg.root} src={bc1} />
-                </Grid>
+
                 <CardContent>
                     <Typography variant="body1" component="p">Selecting any user connected to the signaling server will initiate a peer-to-peer WebRTC connection, where the initiating peer creates an offer containing session information on their end and sending it through the signaling server to a receiving peer. The receiving peer will then answer the offer and through the signaling server, respond with an answer containing session information on their end. Both peers will use the appropriate session information they have to set their own local and remote connection descriptions.</Typography>
                     <br />

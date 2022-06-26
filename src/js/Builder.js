@@ -23,7 +23,7 @@ const axios = require('axios');
 const defaultResume = {
     //profile: "",
     work: "",
-    proj: "",
+    // proj: "",
     education: "",
     languages: [],
     others: []
@@ -127,7 +127,7 @@ const useStyles = makeStyles({
         width: "82%"
     },
     work: {
-        height: "14%",
+        height: "44%",
         top: "18%",
         left: "9%",
         width: "82%"
@@ -318,7 +318,7 @@ const Builder = (props) => {
             <form className={`${classes.inheritSize} ${classes.form}`}>
                 {/* <TextField className={`${classes.root} ${classes.profile}`} minRows={3} maxRows={3} id="profile-field" variant="outlined" multiline onChange={onChange} value={resumeState.profile} /> */}
                 <TextField className={`${classes.root} ${classes.work}`} minRows={6} maxRows={6} id="work-field" variant="outlined" multiline onChange={onChange} value={resumeState.work} />
-                <TextField className={`${classes.root} ${classes.project}`} minRows={11} maxRows={11} id="project-field" variant="outlined" multiline onChange={onChange} value={resumeState.proj} />
+                {/* <TextField className={`${classes.root} ${classes.project}`} minRows={11} maxRows={11} id="project-field" variant="outlined" multiline onChange={onChange} value={resumeState.proj} /> */}
                 <TextField className={`${classes.root} ${classes.education}`} minRows={6} maxRows={6} id="education-field" variant="outlined" multiline onChange={onChange} value={resumeState.education} />
 
                 <div className={`${classes.root} ${classes.language}`}>
