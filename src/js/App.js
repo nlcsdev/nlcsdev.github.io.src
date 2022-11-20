@@ -71,9 +71,9 @@ const App = () => {
                         </Route>
 
                         <Route path={process.env.PUBLIC_URL + "/About"}>
-                            <About text="Hello, I am Nelson Liang. I am a software developer with a background in game design and currently working on a Computer Science Major. My professional experience involves around integrating backend services and localizing for video games via Unity with C#. I also have experience working with web technologies, including HTML, CSS, JS, React, Svelte, Express, MongoDB, AWS, WebRTC, and more.
+                            <About text="Hello, I am Nelson Liang. I am a software engineer with a background in game design and currently completing my Bachelor’s Computer Science Degree. I have experience working in full stack development and dev ops. My technical experience includes but not limited to HTML, CSS, JS, React, Svelte, Python, Ruby, Azure, Kafka, Elasticsearch, Opensearch, Docker, Kubernetes, and WebRTC, etc.
           \n
-          I am looking forward to learning more about software development and making some amazing applications to show the world."
+          I am looking forward to learning more about different software development aspects and contributing to some amazing projects to change the world."
                             />
                         </Route>
 

@@ -114,27 +114,15 @@ const useStyles = makeStyles({
         position: "absolute",
         top: "0%"
     },
-    project: {
-        height: "26%",
-        top: "36%",
-        left: "9%",
-        width: "82%"
-    },
-    profile: {
-        height: "8%",
-        top: "18.5%",
-        left: "9%",
-        width: "82%"
-    },
     work: {
-        height: "44%",
+        height: "48%",
         top: "18%",
         left: "9%",
         width: "82%"
     },
     education: {
-        height: "14%",
-        top: "66%",
+        height: "11%",
+        top: "69%",
         left: "9%",
         width: "82%"
     },
@@ -224,14 +212,10 @@ const Builder = (props) => {
     }
 
     const onChange = (event) => {
-        if (event.target.id == "profile-field") {
-            newProfile(event.target.value);
-        } else if (event.target.id == "work-field") {
+        if (event.target.id == "work-field") {
             newWork(event.target.value);
         } else if (event.target.id == "education-field") {
             newEdu(event.target.value);
-        } else if (event.target.id == "project-field") {
-            newProj(event.target.value);
         }
     }
 
@@ -250,7 +234,6 @@ const Builder = (props) => {
             setLoading(true);
             timer.current = window.setTimeout(SubmitData, 2500);
         }
-
     }
 
     const SubmitData = () => {
@@ -269,7 +252,6 @@ const Builder = (props) => {
         }
 
         if (!empty) {
-            //let serverURL = " https://nlcsdev-proxy.herokuapp.com/";
             let serverURL = "https://cliff-website.rcp.r9n.co/"
             let newResumeRoute = serverURL + "newresume";
             axios.post(newResumeRoute, resumeState).then(
@@ -293,10 +275,8 @@ const Builder = (props) => {
         }
     }
 
-    const newProfile = (payload) => { dispatch({ type: UPDATEPROFILE, payload: payload }) };
     const newWork = (payload) => { dispatch({ type: UPDATEWORK, payload: payload }) };
     const newEdu = (payload) => { dispatch({ type: UPDATEEDU, payload: payload }) };
-    const newProj = (payload) => { dispatch({ type: UPDATEPROJ, payload: payload }) };
 
     const newLanguage = (payload) => { dispatch({ type: UPDATELANGUAGE, payload: payload }) };
     const newOther = (payload) => { dispatch({ type: UPDATEOTHER, payload: payload }) };
@@ -316,9 +296,7 @@ const Builder = (props) => {
         <div className={"relative"}>
             <img className={restrictImg} src={resume_template} />
             <form className={`${classes.inheritSize} ${classes.form}`}>
-                {/* <TextField className={`${classes.root} ${classes.profile}`} minRows={3} maxRows={3} id="profile-field" variant="outlined" multiline onChange={onChange} value={resumeState.profile} /> */}
                 <TextField className={`${classes.root} ${classes.work}`} minRows={6} maxRows={6} id="work-field" variant="outlined" multiline onChange={onChange} value={resumeState.work} />
-                {/* <TextField className={`${classes.root} ${classes.project}`} minRows={11} maxRows={11} id="project-field" variant="outlined" multiline onChange={onChange} value={resumeState.proj} /> */}
                 <TextField className={`${classes.root} ${classes.education}`} minRows={6} maxRows={6} id="education-field" variant="outlined" multiline onChange={onChange} value={resumeState.education} />
 
                 <div className={`${classes.root} ${classes.language}`}>
