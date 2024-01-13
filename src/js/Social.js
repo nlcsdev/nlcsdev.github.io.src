@@ -10,7 +10,7 @@ const Footer = () => {
         <Grid container justifyContent="space-evenly">
             {/* Icons by "icon king1" from freeicon.io*/}
             <a className="icons" href="https://github.com/nlcsdev" target="_blank"><img className="icons" src={gh_icon} /></a>
-            <a className="icons" href="mailto:nelson.liang@ryerson.ca" target="_blank"><img className="icons" src={email_icon} /></a>
+            <a className="icons" href="mailto:nelson.liang@torontomu.ca" target="_blank"><img className="icons" src={email_icon} /></a>
             <a className="icons" href="https://linkedin.com/in/nlcsdev/" target="_blank"><img className="icons" src={linked_icon} /></a>
         </Grid>
     );

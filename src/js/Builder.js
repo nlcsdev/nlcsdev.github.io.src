@@ -121,13 +121,13 @@ const useStyles = makeStyles({
         width: "82%"
     },
     education: {
-        height: "11%",
-        top: "69%",
+        height: "10%",
+        top: "70%",
         left: "9%",
         width: "82%"
     },
     language: {
-        width: "42%",
+        width: "82%",
         top: "83%",
         left: "8%",
     },
@@ -137,7 +137,7 @@ const useStyles = makeStyles({
         left: "50.5%",
     },
     bubble: {
-        width: "40%",
+        width: "20%",
         margin: "5px",
         "& .MuiOutlinedInput-root": {
             height: "32px",
@@ -195,16 +195,18 @@ const Builder = (props) => {
 
     const onEnter = (event) => {
         if (event.keyCode == 13) {
+            event.preventDefault();
             const target = event.target;
             let val = "";
-            if (target.id == "language-field" || target.id == "other-field") {
+            // if (target.id == "language-field" || target.id == "other-field") {
+            if (target.id == "language-field") {
                 val = event.target.value;
                 if (val.trim() != "") {
-                    if (target.id == "language-field") {
+                    // if (target.id == "language-field") {
                         newLanguage(event.target.value);
-                    } else if (target.id == "other-field") {
-                        newOther(event.target.value);
-                    }
+                    // } else if (target.id == "other-field") {
+                    //     newOther(event.target.value);
+                    // }
                     event.target.value = "";
                 }
             }
@@ -304,10 +306,10 @@ const Builder = (props) => {
                     {languageBubbles}
                 </div>
 
-                <div className={`${classes.root} ${classes.other}`}>
+                {/* <div className={`${classes.root} ${classes.other}`}>
                     <TextField className={`${classes.bubble}`} minRows={1} maxRows={1} id="other-field" variant="outlined" onKeyDown={onEnter} />
                     {otherBubbles}
-                </div>
+                </div> */}
             </form>
             <Button className={clsx(classes.submitButton, submitStatusStyling)} disabled={loading} variant="contained" color="primary" onClick={onSubmit}>{submitBtnTxt()}{loading && <CircularProgress className={classes.submitProgress} size={24} />}</Button>
 
