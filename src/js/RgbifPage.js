@@ -60,7 +60,6 @@ const RgbifPage = (props) => {
                 </CardContent>
                 <CardActions>
                     <Grid container>
-                        <Button className={spaceBtn.root} variant="contained" color="primary" href="https://github.com/nlcsdev/rgbif.py/releases" target="_blank">Demo</Button>
                         <Button className={spaceBtn.root} variant="contained" color="primary" href="https://github.com/nlcsdev/rgbif.py" target="_blank">Source</Button>
                     </Grid>
                 </CardActions>

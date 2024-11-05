@@ -69,7 +69,6 @@ const WorkPage = (props) => {
 
                 <CardActions>
                     <Grid container>
-                        <Button className={spaceBtn.root} variant="contained" color="primary" href="https://nlcsdev.github.io/spacestagram/" target="_blank">Demo</Button>
                         <Button className={spaceBtn.root} variant="contained" color="primary" href="https://github.com/nlcsdev/shopify-spacestagram-src" target="_blank">Source</Button>
                     </Grid>
                 </CardActions>

@@ -64,7 +64,6 @@ const NomPage = (props) => {
                 <br />
                 <CardActions>
                     <Grid container>
-                        <Button className={spaceBtn.root} variant="contained" color="primary" href="https://nlcsdev.github.io/nomination-site/" target="_blank">Demo</Button>
                         <Button className={spaceBtn.root} variant="contained" color="primary" href="https://github.com/nlcsdev/nomination-site" target="_blank">Source</Button>
                     </Grid>
                 </CardActions>

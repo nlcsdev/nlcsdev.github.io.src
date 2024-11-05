@@ -61,10 +61,10 @@ const Projects = (props) => {
 
     const content = [
         // (<ProjectComp customClass="projectCard" rootComp={workTab} thumbnail={stickyrice_thumbnail} title="Sticky Rice Games" desc={workDesc} />),
-        (<ProjectComp customClass="projectCard" rootComp={bcTab} thumbnail={bc_thumbnail} title="Basement Chatter" desc={bcDesc} live="https://basement-chatter.rcp.r9n.co/" src="https://github.com/nlcsdev/basement-chatter-front-src" />),
+        (<ProjectComp customClass="projectCard" rootComp={bcTab} thumbnail={bc_thumbnail} title="Basement Chatter" desc={bcDesc} src="https://github.com/nlcsdev/basement-chatter-front-src" />),
         (<ProjectComp customClass="projectCard" rootComp={rgbTab} thumbnail={rgbif_thumbnail} title="Rgbif" desc={rgbDesc} live="https://github.com/nlcsdev/rgbif.py/releases" src="https://github.com/nlcsdev/rgbif.py" />),
-        (<ProjectComp customClass="projectCard" rootComp={spaceTab} thumbnail={space_thumbnail} title="Spacetagram" desc={spaceDesc} live="https://nlcsdev.github.io/spacestagram/" src="https://github.com/nlcsdev/shopify-spacestagram-src"  /> ),
-        (<ProjectComp customClass="projectCard" rootComp={nomTab} thumbnail={nom_thumbnail} title="Nomination Site" desc={nomDesc} live="https://nlcsdev.github.io/nomination-site/" src="https://github.com/nlcsdev/nomination-site" />),
+        (<ProjectComp customClass="projectCard" rootComp={spaceTab} thumbnail={space_thumbnail} title="Spacetagram" desc={spaceDesc} src="https://github.com/nlcsdev/shopify-spacestagram-src"  /> ),
+        (<ProjectComp customClass="projectCard" rootComp={nomTab} thumbnail={nom_thumbnail} title="Nomination Site" desc={nomDesc} src="https://github.com/nlcsdev/nomination-site" />),
         (<ProjectComp customClass="projectCard" rootComp={scaryTab} thumbnail={scary_thumbnail} title="Scary Cam" desc={scaryDesc} src="https://github.com/nlcsdev/scarycam" />),
 ,
         (<ProjectComp customClass="projectCard" rootComp={portfolioTab} thumbnail={port_thumbnail} title="Portfolio Site" desc={portfolioDesc} src="https://github.com/nlcsdev/nlcsdev.github.io.src" />)

@@ -101,7 +101,6 @@ const Resume = (props) => {
 
     const btnGroup = (
         <Grid className={classes.root} container item justifyContent="center" alignItems="center">
-            <Button className={`${spaceBtn.root} ${jumpy.root}`} variant="contained" color="primary" onClick={() => { setTip(true) }} component={ToBuilder}>Not The Right Fit?</Button>
             <Button className={`${spaceBtn.root}`} variant="contained" color="primary" startIcon={<Icon>download</Icon>} onClick={downloadPDF}>Download PDF</Button>
         </Grid>
     );
@@ -122,10 +121,6 @@ const Resume = (props) => {
         <Switch>
             <Route exact path={process.env.PUBLIC_URL + "/Resume"}>
                 <PageContainer src="resume" jc={jcSetting} dir={containerDir} child={content} />
-            </Route>
-
-            <Route path={process.env.PUBLIC_URL + "/Resume/Builder"}>
-                <PageContainer src="builder" jc={jcSetting} child={[(<Builder />)]} />
             </Route>
         </Switch>
 

@@ -71,9 +71,12 @@ const App = () => {
                         </Route>
 
                         <Route path={process.env.PUBLIC_URL + "/About"}>
-                            <About text="Hello, I am Nelson Liang. I am a software engineer with a background in game design and currently completing my Bachelor’s Computer Science Degree. I have experience working in full stack development and dev ops. My technical experience includes but not limited to HTML, CSS, JS, React, Svelte, Python, Ruby, Azure, Kafka, Elasticsearch, Opensearch, Docker, Kubernetes, and WebRTC, etc.
-          \n
-          I am looking forward to learning more about different software development aspects and contributing to some amazing projects to change the world."
+                            <About text="My name is Nelson Liang, and I am a Software Engineer with Undergraduate degrees in Computer Science and Game Design.\n
+From 2014-2018, I studied and graduated from Sheridan College with a Bachelor of Game Design. I continued to work at my co-op placement at Sticky Rice Games, lasting between 2017-2020 as a Developer, mainly working with Unity and C# on integrating Google Play and Steam SDK features into our games. In addition, I also worked on some projects to improve the design of our games, add in localization, and perform quality assurance testing.\n
+In 2020, I departed Sticky Rice Games to pursue a Bachelor of Science and Major in Computer Science at Toronto Metropolitan University (formerly Ryerson University), lasting between 2020-2025.\n
+In 2022, I interned at Penfield AI as a Full Stack Software Engineer, primarily working on Frontend features in React, as well as having some exposure to Kubernetes.\n
+From 2022 to the present, I interned and contracted for part-time work at Verto Health as a Junior Site Reliability Engineer. Some of my work includes designing and deploying infrastructure for data ingestion, migrating Kubernetes resources and data between clusters, implementing image scanning software into our CI pipelines, and setting up monitoring dashboards and alerting, etc.
+"
                             />
                         </Route>
 
