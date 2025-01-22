@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { UPDATELANGUAGE, UPDATEOTHER, REMOVELANGUAGE, REMOVEOTHER, UPDATEEDU, UPDATEWORK, UPDATEPROFILE, UPDATEPROJ } from "../root/actions.js";
 
-
-import resume_template from "../img/resume_template.jpg";
-
 import TextField from '@material-ui/core/TextField';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
@@ -296,7 +293,7 @@ const Builder = (props) => {
 
     return (
         <div className={"relative"}>
-            <img className={restrictImg} src={resume_template} />
+            {/*<img className={restrictImg} src={resume_template} />*/}
             <form className={`${classes.inheritSize} ${classes.form}`}>
                 <TextField className={`${classes.root} ${classes.work}`} minRows={6} maxRows={6} id="work-field" variant="outlined" multiline onChange={onChange} value={resumeState.work} />
                 <TextField className={`${classes.root} ${classes.education}`} minRows={6} maxRows={6} id="education-field" variant="outlined" multiline onChange={onChange} value={resumeState.education} />
